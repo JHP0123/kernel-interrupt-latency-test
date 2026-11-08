@@ -1,0 +1,52 @@
+tracer: function_graph
+
+TIME       CPU  DURATION                  FUNCTION CALLS
+
+|          |     |   |                     |   |   |   |
+
+3641.138185 |   0)               |  button_th_handler threaded_irq_button_driver_v2 {
+3641.138188 |   0)               |    gpiod_get_value() {
+3641.138189 |   0)               |      gpiod_get_raw_value_commit() {
+3641.138190 |   0)               |        bcm2835_gpio_get() {
+3641.138191 |   0)   1.000 us    |          gpiochip_get_data();
+3641.138193 |   0)   2.759 us    |        } /* bcm2835_gpio_get /
+3641.138194 |   0)   4.593 us    |      } / gpiod_get_raw_value_commit /
+3641.138194 |   0)   6.426 us    |    } / gpiod_get_value /
+3641.138195 |   0)               |    ktime_get() {
+3641.138196 |   0)   0.575 us    |      arch_counter_read();
+3641.138197 |   0)   1.870 us    |    } / ktime_get /
+3641.138197 |   0) + 14.556 us   |  } / button_th_handler [threaded_irq_button_driver_v2] /
+3641.138233 |   2)               |  button_bh_handler threaded_irq_button_driver_v2 {
+3641.138235 |   2)   1.019 us    |    _raw_spin_lock_irqsave();
+3641.138237 |   2)   0.685 us    |    _raw_spin_unlock_irqrestore();
+3641.138238 |   2)   0.740 us    |    timer_delete();
+3641.138239 |   2)   0.611 us    |    _raw_spin_lock_irqsave();
+3641.138240 |   2)   0.685 us    |    _raw_spin_unlock_irqrestore();
+3641.138242 |   2)   9.056 us    |  } / button_bh_handler [threaded_irq_button_driver_v2] /
+3641.281142 |   0)               |  button_th_handler threaded_irq_button_driver_v2 {
+3641.281143 |   0)               |    gpiod_get_value() {
+3641.281144 |   0)               |      gpiod_get_raw_value_commit() {
+3641.281144 |   0)               |        bcm2835_gpio_get() {
+3641.281145 |   0)   0.574 us    |          gpiochip_get_data();
+3641.281146 |   0)   1.981 us    |        } / bcm2835_gpio_get /
+3641.281147 |   0)   3.204 us    |      } / gpiod_get_raw_value_commit /
+3641.281147 |   0)   4.445 us    |    } / gpiod_get_value /
+3641.281148 |   0)               |    ktime_get() {
+3641.281149 |   0)   0.592 us    |      arch_counter_read();
+3641.281150 |   0)   1.944 us    |    } / ktime_get /
+3641.281150 |   0)   8.963 us    |  } / button_th_handler [threaded_irq_button_driver_v2] /
+3641.281178 |   2)               |  button_bh_handler threaded_irq_button_driver_v2 {
+3641.281179 |   2)   0.648 us    |    _raw_spin_lock_irqsave();
+3641.281180 |   2)   0.686 us    |    _raw_spin_unlock_irqrestore();
+3641.281182 |   2)   0.741 us    |    _raw_spin_lock_irqsave();
+3641.281183 |   2)   0.574 us    |    _raw_spin_unlock_irqrestore();
+3641.281184 |   2)               |    mod_timer() {
+3641.281185 |   2)               |      lock_timer_base() {
+3641.281186 |   2)   0.815 us    |        _raw_spin_lock_irqsave();
+3641.281187 |   2)   2.241 us    |      } / lock_timer_base /
+3641.281188 |   2)   0.648 us    |      detach_if_pending();
+3641.281189 |   2)   0.685 us    |      calc_wheel_index();
+3641.281190 |   2)   0.722 us    |      enqueue_timer();
+3641.281192 |   2)   0.685 us    |      _raw_spin_unlock_irqrestore();
+3641.281193 |   2)   8.574 us    |    } / mod_timer /
+3641.281193 |   2) + 15.723 us   |  } / button_bh_handler [threaded_irq_button_driver_v2] */
