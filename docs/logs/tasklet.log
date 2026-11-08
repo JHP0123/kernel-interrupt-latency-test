@@ -1,0 +1,58 @@
+tracer: function_graph
+
+TIME       CPU  DURATION                  FUNCTION CALLS
+
+|          |     |   |                     |   |   |   |
+
+14858.985379 |   0)               |  button_th_handler tasklet_button_driver {
+14858.985383 |   0)               |    gpiod_get_value() {
+14858.985384 |   0)               |      gpiod_get_raw_value_commit() {
+14858.985385 |   0)               |        bcm2835_gpio_get() {
+14858.985386 |   0)   1.111 us    |          gpiochip_get_data();
+14858.985388 |   0)   2.945 us    |        } /* bcm2835_gpio_get /
+14858.985389 |   0)   4.648 us    |      } / gpiod_get_raw_value_commit /
+14858.985389 |   0)   6.481 us    |    } / gpiod_get_value /
+14858.985390 |   0)               |    ktime_get() {
+14858.985391 |   0)   0.592 us    |      arch_counter_read();
+14858.985392 |   0)   1.907 us    |    } / ktime_get /
+14858.985393 |   0)               |    __tasklet_schedule() {
+14858.985394 |   0)   0.648 us    |      __raise_softirq_irqoff();
+14858.985395 |   0)   1.907 us    |    } / __tasklet_schedule /
+14858.985395 |   0) + 17.612 us   |  } / button_th_handler [tasklet_button_driver] /
+14858.985402 |   0)               |  button_bh_handler tasklet_button_driver {
+14858.985402 |   0)   0.722 us    |    _raw_spin_lock_irqsave();
+14858.985404 |   0)   0.611 us    |    _raw_spin_unlock_irqrestore();
+14858.985405 |   0)   0.592 us    |    timer_delete();
+14858.985406 |   0)   0.611 us    |    _raw_spin_lock_irqsave();
+14858.985407 |   0)   0.593 us    |    _raw_spin_unlock_irqrestore();
+14858.985408 |   0)   6.555 us    |  } / button_bh_handler [tasklet_button_driver] /
+14859.128416 |   0)               |  button_th_handler tasklet_button_driver {
+14859.128418 |   0)               |    gpiod_get_value() {
+14859.128418 |   0)               |      gpiod_get_raw_value_commit() {
+14859.128419 |   0)               |        bcm2835_gpio_get() {
+14859.128420 |   0)   0.667 us    |          gpiochip_get_data();
+14859.128421 |   0)   1.852 us    |        } / bcm2835_gpio_get /
+14859.128421 |   0)   3.018 us    |      } / gpiod_get_raw_value_commit /
+14859.128422 |   0)   4.204 us    |    } / gpiod_get_value /
+14859.128423 |   0)               |    ktime_get() {
+14859.128423 |   0)   0.592 us    |      arch_counter_read();
+14859.128424 |   0)   1.870 us    |    } / ktime_get /
+14859.128425 |   0)               |    __tasklet_schedule() {
+14859.128426 |   0)   0.666 us    |      __raise_softirq_irqoff();
+14859.128427 |   0)   1.777 us    |    } / __tasklet_schedule /
+14859.128427 |   0) + 11.500 us   |  } / button_th_handler [tasklet_button_driver] /
+14859.128433 |   0)               |  button_bh_handler tasklet_button_driver {
+14859.128433 |   0)   0.593 us    |    _raw_spin_lock_irqsave();
+14859.128435 |   0)   0.592 us    |    _raw_spin_unlock_irqrestore();
+14859.128436 |   0)   0.704 us    |    _raw_spin_lock_irqsave();
+14859.128437 |   0)   0.926 us    |    _raw_spin_unlock_irqrestore();
+14859.128438 |   0)               |    mod_timer() {
+14859.128439 |   0)               |      lock_timer_base() {
+14859.128440 |   0)   0.592 us    |        _raw_spin_lock_irqsave();
+14859.128441 |   0)   1.926 us    |      } / lock_timer_base /
+14859.128442 |   0)   0.556 us    |      detach_if_pending();
+14859.128443 |   0)   0.667 us    |      calc_wheel_index();
+14859.128445 |   0)   1.000 us    |      enqueue_timer();
+14859.128446 |   0)   0.556 us    |      _raw_spin_unlock_irqrestore();
+14859.128447 |   0)   8.796 us    |    } / mod_timer /
+14859.128448 |   0) + 15.240 us   |  } / button_bh_handler [tasklet_button_driver] */
