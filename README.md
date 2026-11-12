@@ -21,7 +21,7 @@
 4. [In-Depth Latency Analysis](#4-in-depth-latency-analysis)
 5. [Verification & Trace Logs](#5-verification--trace-logs)
 6. [Getting Started](#6-getting-started)
-7. [Limitations & Future Work](#7-limitations--future-work)
+7. [Limitations](#7-limitations)
 
 > 📘 배경 지식: [리눅스 커널 Bottom-Half 메커니즘 정리](./docs/bottom_half_theory.md)
 
@@ -209,7 +209,7 @@ cat trace
 
 ---
 
-## 7. Limitations & Future Work
+## 7. Limitations
 
 **Limitations**
 - 기법별 측정이 버튼 누름·뗌 각 1회로, 통계적 대표성이 부족함
